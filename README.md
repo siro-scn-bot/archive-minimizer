@@ -11,16 +11,23 @@ youtubeの生放送のアーカイブからダイジェスト動画を生成す�
 
 ## Requirement
 BeautifulSoup
+
 google-api-python-client-py3
+
 pytube
+
 scipy
+
 numpy
+
 ffmpy
+
 numda
+
 
 上記のpythonモジュールに加えffmpegを利用しているので、ffmpegを使えるようダウンロードしてパスを通しておいてください。
 ## Usage
-
+archive-minimizer以下のすべてのファイルを同じフォルダに入れておきます。
 
     # 動画の音声をもとに発話部分のstart_pointとend_pointの組合せのリストをstart_end_points.txtに保存する
     # binsを増やすと雑音カットの閾値が厳密になるが計算量が上がる.
