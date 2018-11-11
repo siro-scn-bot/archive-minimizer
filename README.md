@@ -71,7 +71,7 @@ live_video_idはダイジェストを作りたい動画の動画id、output_file
 
 
   
-Start_end_points_generator.start_end_points_generator(input_file_name,bins=6000,filter_range=0.09,zero_rate=80)　について
+#### Start_end_points_generator.start_end_points_generator(input_file_name,bins=6000,filter_range=0.09,zero_rate=80)　について
      
     # binsを増やすと発話領域とそれ以外を分離する閾値が厳密になるが、処理時間が増えます。
 
@@ -81,7 +81,7 @@ Start_end_points_generator.start_end_points_generator(input_file_name,bins=6000,
 　　
 
   
-topic_graph_data_sec = Topic_graph_generator.topic_graph_generator(time_delta_sec=5, rug_sec=9, climax_number=10) について
+#### topic_graph_data_sec = Topic_graph_generator.topic_graph_generator(time_delta_sec=5, rug_sec=9, climax_number=10) について
     
     # ☆ time_delta_secは盛り上がりの間隔を何秒単位で区切るかと、1つのパートの秒数。整数値のみ。5～10秒が妥当。
 
@@ -91,7 +91,7 @@ topic_graph_data_sec = Topic_graph_generator.topic_graph_generator(time_delta_se
 　　
 
   
-start_timedelta_arr = Start_end_modifier.start_end_modifier(input_file_name, topic_graph_data_sec, lengthen_range=0.5,shorten_range=0.3, margin_range=0.05) について
+#### start_timedelta_arr = Start_end_modifier.start_end_modifier(input_file_name, topic_graph_data_sec, lengthen_range=0.5,shorten_range=0.3, margin_range=0.05) について
  
     # lengthen_rangeは補正時に動画を前後幅どこまで長くするかの許容値。topic_graph_data_secが5のときlengthen_rangeが0.5だと、1つのパートの長さが5～6(5 + 0.5*2)秒になる。
 
