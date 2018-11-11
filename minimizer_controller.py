@@ -86,4 +86,4 @@ for vtuber_name, channel_id in channelid_dict.items():
 
 
     # ファイル名,動画タイトル,動画URLを各行に記したtxtファイルを各人ごとに作る→投稿の際はtxtファイルを呼び出して投稿
-    # ファイル名は"suzu_gXdhGzOeH98.mp4"みたいに "各部員の名前_動画id.mp4"だといい感じなんじゃないかな
+    # ファイル名は"suzu_gXdhGzOeH98.mp4"みたいに "各部員の名前_動画id.mp4"
