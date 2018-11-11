@@ -20,4 +20,5 @@ youtubeの生放送のアーカイブからダイジェスト動画を生成す�
     start_timedelta_arr = Start_end_modifier.start_end_modifier(input_file_name, topic_graph_data_sec, lengthen_range=0.5,shorten_range=0.3, margin_range=0.05)
     print(start_timedelta_arr)
     Movie_generator.movie_generator(start_timedelta_arr, input_file_name, output_file_name)
-    
+    # ファイル名,動画タイトル,動画URLを各行に記したtxtファイルを各人ごとに作る→投稿の際はtxtファイルを呼び出して投稿
+    # ファイル名は"suzu_gXdhGzOeH98.mp4"みたいに "各部員の名前_動画id.mp4"
