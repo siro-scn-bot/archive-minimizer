@@ -64,4 +64,3 @@ def live_archive_minimizer(live_video_id,output_filename):
     Movie_generator.movie_generator(start_timedelta_arr, input_file_name, output_file_name)
     """
     """
-    #wavファイルをいつ処理するか 並行処理を行うなら全てを並行処理にしないといけない
