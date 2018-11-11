@@ -19,7 +19,7 @@ channelid_dict ={"dotlive":"UCAZ_LA7f0sjuZ1Ni8L2uITw",
                  "riko":"UCKUcnaLsG2DeQqza8zRXHiA"}
 
 # 認証に必要なデータ
-DEVELOPER_KEY = "AIzaSyCVgpmZ7NlORA4xB8jlo4WIoWxyqiHK1eU"
+DEVELOPER_KEY = "your DEVELOPER_KEY"
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
