@@ -29,7 +29,7 @@ ffmpy
 
 numda
 
-selenium
+matplotlib
 
 上記のpythonモジュールに加えffmpegを利用しているので、ffmpegをダウンロードしてパスを通しておいてください。
 
