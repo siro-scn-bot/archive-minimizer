@@ -17,12 +17,6 @@ def get_arc(video_url):
     Get_archive_chat.get_archive_chat2(video_url)
 
 def live_archive_minimizer(live_video_id,output_filename):
-    # 認証に必要なデータ
-    DEVELOPER_KEY = "your DEVELOPER_KEY"
-    YOUTUBE_API_SERVICE_NAME = "youtube"
-    YOUTUBE_API_VERSION = "v3"
-    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
-
 
     video_url = "https://www.youtube.com/watch?v=" + live_video_id
     video_id = live_video_id
