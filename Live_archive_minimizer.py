@@ -27,12 +27,6 @@ def live_archive_minimizer(live_video_id,output_filename):
     video_url = "https://www.youtube.com/watch?v=" + live_video_id
     video_id = live_video_id
     print(video_id)
-    #video_data = youtube.videos().list(id =video_id, part="snippet").execute()
-    #input_file_name = video_data["items"][0]["snippet"]["title"] + ".mp4"
-
-    # 最後に出力される動画の名前. 拡張子はナシ
-    output_file_name = output_filename #←youtubeのidにする
-
 
     th1 = threading.Thread(target=mov_dl, args=([video_url]))
     th2 = threading.Thread(target=get_arc, args=([video_url]))
