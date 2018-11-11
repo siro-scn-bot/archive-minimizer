@@ -31,23 +31,22 @@ numda
 
 selenium
 
-上記のpythonモジュールに加えffmpegとchromedriverを利用しているので、ffmpegとchromedriverをダウンロードしてパスを通しておいてください。
+上記のpythonモジュールに加えffmpegを利用しているので、ffmpegをダウンロードしてパスを通しておいてください。
 
+またYouTube Data API (v3)を利用しているのでGoogle Developers ConsoleでAPIキーを取得しておいてください。
 ## Usage
 「特定のyoutubeチャンネル（複数可）の全てのアーカイブをダイジェスト化する」使い方と「特定のアーカイブのダイジェスト化する」使い方2通りあるので記します。  
 
-まず準備としてDEVELOPER_KEY = "your DEVELOPER_KEY"
-
-  
-  
   
 ### ・「特定のyoutubeチャンネル（複数可）の全てのアーカイブをダイジェスト化する」場合
 
 1.archive-minimizer以下のすべてのファイルを同じフォルダに入れておきます。
 
-2.minimizer_controller.pyのchannelid_dictの内容を「"適当な名前"："アーカイブ化したいyoutubeチャンネルのチャンネルid"」という形式に変更します。現状ではアイドル部全員のチャンネルidが入っています（チャンネルidとは「https://www.youtube.com/channel/????」 という形式のURLの????の部分です）
+2.minimizer_controller.pyの"your DEVELOPER_KEY"にGoogle Developers Consoleで取得したAPIキー入力します。
 
-3.minimizer_controller.pyを実行します。
+3.minimizer_controller.pyのchannelid_dictの内容を「"適当な名前"："アーカイブ化したいyoutubeチャンネルのチャンネルid"」という形式に変更します。現状ではアイドル部全員のチャンネルidが入っています（チャンネルidとは「https://www.youtube.com/channel/????」 という形式のURLの????の部分です）
+
+4.minimizer_controller.pyを実行します。
 
 この場合出力されるダイジェスト動画ファイルは「適当な名前_動画id.mp4」という名前になります。  
 
