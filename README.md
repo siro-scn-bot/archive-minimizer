@@ -1,0 +1,2 @@
+# archive-minimizer
+youtubeの生放送のアーカイブからダイジェスト動画を生成するプログラムです。
