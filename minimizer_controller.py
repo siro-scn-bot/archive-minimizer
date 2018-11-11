@@ -19,7 +19,7 @@ channelid_dict ={"dotlive":"UCAZ_LA7f0sjuZ1Ni8L2uITw",
                  "riko":"UCKUcnaLsG2DeQqza8zRXHiA"}
 
 # 認証に必要なデータ
-DEVELOPER_KEY = "AIzaSyCVgpmZ7NlORA4xB8jlo4WIoWxyqiHK1eU"
+DEVELOPER_KEY = "your DEVELOPER_KEY"
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
@@ -27,7 +27,6 @@ youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVE
 
 for vtuber_name, channel_id in channelid_dict.items():
 
-    # ループごとに再利用する変数の準備
     videos = []
     pageToken_str = ""
     video_ids = []
@@ -52,7 +51,7 @@ for vtuber_name, channel_id in channelid_dict.items():
         # nextPageTokenをpageTokenに代入して次のページを読み込む
         pageToken_str = search_response.get("nextPageToken")
 
-    # videoidの中からliveアーカイブのvideoidだけ抽出する
+    # videoidの中からアーカイブのvideoidだけ抽出する
     for videoid in video_ids:
 
         next_url = ""
@@ -61,12 +60,12 @@ for vtuber_name, channel_id in channelid_dict.items():
         html = requests.get(target_url)
         soup = BeautifulSoup(html.text, "html.parser")
 
-        # 生放送のアーカイブでもyoutube上で編集されててチャット欄が存在しない可能性があるので判定
+        # 生放送のアーカイブでもチャット欄が存在しない可能性があるので判定
         for iframe in soup.find_all("iframe"):
             if ("live_chat_replay" in iframe["src"]):
                 next_url = iframe["src"]
 
-        # 動画が生放送のアーカイブなら
+        # 動画が生放送のアーカイブならidを保存
         if responses["items"][0].get("liveStreamingDetails",None) is not None:
             if len(next_url)!=0:
                 print(responses["items"][0]["snippet"]["title"])
@@ -80,10 +79,6 @@ for vtuber_name, channel_id in channelid_dict.items():
     with open("{}_live_videos.txt".format(vtuber_name), mode='w', encoding="utf-8") as f:
         f.writelines(file_data)
 
-    #
     for num,live_video_id in enumerate(live_video_ids):
         Live_archive_minimizer.live_archive_minimizer(live_video_id,output_filename=output_file_names[num])
 
-
-    # ファイル名,動画タイトル,動画URLを各行に記したtxtファイルを各人ごとに作る→投稿の際はtxtファイルを呼び出して投稿
-    # ファイル名は"suzu_gXdhGzOeH98.mp4"みたいに "各部員の名前_動画id.mp4"だといい感じなんじゃないかな

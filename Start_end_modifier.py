@@ -23,7 +23,7 @@ def start_end_modifier(input_file_name,topic_graph_data_sec,lengthen_range,short
             end_points.append(state_list[1])
 
     start_points_np = np.array(start_points)
-    start_points_np = start_points_np.astype(np.float64)  # float型にしておかないと次の計算でバグる
+    start_points_np = start_points_np.astype(np.float64)
     start_points_np = start_points_np / sampling_rate
     start_points_np_sec = np.round(start_points_np, 3)
 
@@ -33,7 +33,6 @@ def start_end_modifier(input_file_name,topic_graph_data_sec,lengthen_range,short
     end_points_np_sec = np.round(end_points_np, 3)
 
 
-    # アバウトな盛り上がりのデータを小数点3位までのfloat型に変更
     topic_graph_data_sec = topic_graph_data_sec.astype(np.float64)
     topic_graph_data_sec = np.round(topic_graph_data_sec, 3)
 
@@ -43,20 +42,16 @@ def start_end_modifier(input_file_name,topic_graph_data_sec,lengthen_range,short
 
         for i in range(len(start_points_np_sec)):
 
-            # 動画の切り取り開始時刻 topic_sec が発話部分なら
-
             if (start_points_np_sec[i] <= topic_sec)and(topic_sec <= end_points_np_sec[i]):
+
                 if (topic_sec -lengthen_range <= start_points_np_sec[i]  and end_points_np_sec[i - 1]  <=topic_sec):
-                # もし猶予0.05を取ると別の発話部分を取り込んでしまうなら取り込まないように
                     if (start_points_np_sec[i] - margin_range <=end_points_np_sec[i-1]):
                         start_list.append(end_points_np_sec[i-1] - (start_points_np_sec[i] - end_points_np_sec[i-1])/2)
                         break
-                    # そうでないなら start_points_np_sec -0.05を開始地点にする
                     else:
                         start_list.append(start_points_np_sec[i] - margin_range)
                         break
 
-                # 前の方に猶予は取っていいけど後ろの方の猶予はもっとタイトにしないアカンくないか
                 if (topic_sec <= start_points_np_sec[i] and end_points_np_sec[i + 1] <= topic_sec + shorten_range):
                     if (start_points_np_sec[i + 1] <= end_points_np_sec[i] + margin_range ):
                         start_list.append(end_points_np_sec[i] + (start_points_np_sec[i+1] - end_points_np_sec[i])/2)
