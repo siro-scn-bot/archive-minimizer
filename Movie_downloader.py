@@ -4,14 +4,12 @@ import re
 def movie_downloader(youtube_url):
     # ダウンロードしたいページのurlを入れる
     url = youtube_url
-
-    # 変数ytに入れる
+    
     yt = YouTube(url)
-
     resolution = 0
     tag = ""
 
-    # 音声と映像が入っていて解像度が最も大きい映像のタグを取得する
+    # 音声と映像があり解像度が最も高い映像のタグを取得
     for lis in yt.streams.all():
         print(lis)
         if "mp4" in str(lis) and "vcodec" in str(lis) and "acodec" in str(lis):
