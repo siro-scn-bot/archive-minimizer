@@ -29,8 +29,10 @@ ffmpy
 
 numda
 
+selenium
 
-上記のpythonモジュールに加えffmpegを利用しているので、ffmpegを使えるようダウンロードしてパスを通しておいてください。
+上記のpythonモジュールに加えffmpegとchromedriverを利用しているので、ffmpegとchromedriverをダウンロードしてパスを通しておいてください。
+
 ## Usage
 「特定のyoutubeチャンネル（複数可）の全てのアーカイブをダイジェスト化する」使い方と「特定のアーカイブのダイジェスト化する」使い方2通りあるので記します。  
 
