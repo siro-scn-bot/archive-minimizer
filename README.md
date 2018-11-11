@@ -28,8 +28,10 @@ numda
 
 上記のpythonモジュールに加えffmpegを利用しているので、ffmpegを使えるようダウンロードしてパスを通しておいてください。
 ## Usage
-「特定のyoutubeチャンネル（複数可）の全てのアーカイブをダイジェスト化する」使い方と「特定のアーカイブのダイジェスト化する」使い方2通りあるので記します。　　
-
+「特定のyoutubeチャンネル（複数可）の全てのアーカイブをダイジェスト化する」使い方と「特定のアーカイブのダイジェスト化する」使い方2通りあるので記します。
+  
+  
+  
 ・「特定のyoutubeチャンネル（複数可）の全てのアーカイブをダイジェスト化する」場合
 
 1.archive-minimizer以下のすべてのファイルを同じフォルダに入れておきます。
@@ -41,6 +43,7 @@ numda
 この場合出力されるダイジェスト動画ファイルは「適当な名前_動画id.mp4」という名前になります。　　
 
 
+  
 ・「特定のアーカイブのダイジェスト化する」場合
 
 1.archive-minimizer以下のすべてのファイルを同じフォルダに入れておきます。
@@ -57,11 +60,13 @@ live_video_idはダイジェストを作りたい動画の動画id、output_file
 この場合出力されるダイジェスト動画ファイルは「output_filename.mp4」という名前になります。
 　　
 
+  
 どちらを使う場合においても、Live_archive_minimizer.pyのパラメーターを変化させることでダイジェスト動画の内容を調整することができます。
 
 それぞれコードを参照しながら説明します。☆が付いているパラメーターは好みで調節したほうが良いですが、それ以外はあまり変更しないほうが良いです。
 　　
 
+  
 Start_end_points_generator.start_end_points_generator(input_file_name,bins=6000,filter_range=0.09,zero_rate=80)　について
 
 binsを増やすと発話領域とそれ以外を分離する閾値が厳密になるが、処理時間が増えます。
@@ -71,6 +76,7 @@ filter_rangeを増やすと発話部分と認識される部分が増えるが�
 zero_rateの範囲は0 < zero_rate < 100。zero_rateを上げると発話部分だと認識される部分が増えるが雑音を除去しにくくなる。zero_rateを上げると雑音を除去しやすくなるが発話部分と認識される部分が減る。70～80あたりが妥当。
 　　
 
+  
 topic_graph_data_sec = Topic_graph_generator.topic_graph_generator(time_delta_sec=5, rug_sec=9, climax_number=10) について
 ☆ time_delta_secは盛り上がりの間隔を何秒単位で区切るかと、1つのパートの秒数。整数値のみ。5～10秒が妥当。
 
@@ -79,6 +85,7 @@ topic_graph_data_sec = Topic_graph_generator.topic_graph_generator(time_delta_se
 ☆ climax_numberはいくつの盛り上がりを切り取るかの数。整数値のみ。約time_delta_sec*climax_number秒の動画が出力されることになる。
 　　
 
+  
 start_timedelta_arr = Start_end_modifier.start_end_modifier(input_file_name, topic_graph_data_sec, lengthen_range=0.5,shorten_range=0.3, margin_range=0.05) について
  
 lengthen_rangeは補正時に動画を前後幅どこまで長くするかの許容値。topic_graph_data_secが5のときlengthen_rangeが0.5だと、1つのパートの長さが5～6(5 + 0.5*2)秒になる。
