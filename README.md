@@ -69,27 +69,27 @@ live_video_idはダイジェストを作りたい動画の動画id、output_file
   
 Start_end_points_generator.start_end_points_generator(input_file_name,bins=6000,filter_range=0.09,zero_rate=80)　について
 
-binsを増やすと発話領域とそれ以外を分離する閾値が厳密になるが、処理時間が増えます。
+#binsを増やすと発話領域とそれ以外を分離する閾値が厳密になるが、処理時間が増えます。
 
-filter_rangeを増やすと発話部分と認識される部分が増えるが、本来発話部分でない部分をそれと認識する量も増える。0.07～0.11あたりが妥当。
+#filter_rangeを増やすと発話部分と認識される部分が増えるが、本来発話部分でない部分をそれと認識する量も増える。0.07～0.11あたりが妥当。
 
-zero_rateの範囲は0 < zero_rate < 100。zero_rateを上げると発話部分だと認識される部分が増えるが雑音を除去しにくくなる。zero_rateを上げると雑音を除去しやすくなるが発話部分と認識される部分が減る。70～80あたりが妥当。
+#zero_rateの範囲は0 < zero_rate < 100。zero_rateを上げると発話部分だと認識される部分が増えるが雑音を除去しにくくなる。zero_rateを上げると雑音を除去しやすくなるが発話部分と認識される部分が減る。70～80あたりが妥当。
 　　
 
   
 topic_graph_data_sec = Topic_graph_generator.topic_graph_generator(time_delta_sec=5, rug_sec=9, climax_number=10) について
-☆ time_delta_secは盛り上がりの間隔を何秒単位で区切るかと、1つのパートの秒数。整数値のみ。5～10秒が妥当。
+#☆ time_delta_secは盛り上がりの間隔を何秒単位で区切るかと、1つのパートの秒数。整数値のみ。5～10秒が妥当。
 
-☆ rug_secは発話からコメントがyoutubeに表示されるまでのラグの秒数. 8～10秒が妥当.小数点以下にも対応しているが、最終的に小数点3位までに値が丸め込まれるのでそれ以上記述する意味はない。
+#☆ rug_secは発話からコメントがyoutubeに表示されるまでのラグの秒数. 8～10秒が妥当.小数点以下にも対応しているが、最終的に小数点3位までに値が丸め込まれるのでそれ以上記述する意味はない。
 
-☆ climax_numberはいくつの盛り上がりを切り取るかの数。整数値のみ。約time_delta_sec*climax_number秒の動画が出力されることになる。
+#☆ climax_numberはいくつの盛り上がりを切り取るかの数。整数値のみ。約time_delta_sec*climax_number秒の動画が出力されることになる。
 　　
 
   
 start_timedelta_arr = Start_end_modifier.start_end_modifier(input_file_name, topic_graph_data_sec, lengthen_range=0.5,shorten_range=0.3, margin_range=0.05) について
  
-lengthen_rangeは補正時に動画を前後幅どこまで長くするかの許容値。topic_graph_data_secが5のときlengthen_rangeが0.5だと、1つのパートの長さが5～6(5 + 0.5*2)秒になる。
+#lengthen_rangeは補正時に動画を前後幅どこまで長くするかの許容値。topic_graph_data_secが5のときlengthen_rangeが0.5だと、1つのパートの長さが5～6(5 + 0.5*2)秒になる。
 
-shorten_rangeeは補正時に動画を前後幅どこまで短くするかの許容値。topic_graph_data_secが5のときshorten_rangeが0.3だと、1つのパートの長さが4.4～5(5 - 0.3*2)秒になる。
+#shorten_rangeeは補正時に動画を前後幅どこまで短くするかの許容値。topic_graph_data_secが5のときshorten_rangeが0.3だと、1つのパートの長さが4.4～5(5 - 0.3*2)秒になる。
 
-margin_rangeは発話領域とそうでない領域のちょうど境界で動画が切れると違和感が発生する場合があるため、余分に動画を長く・または短くする値。0.05が妥当。
+#margin_rangeは発話領域とそうでない領域のちょうど境界で動画が切れると違和感が発生する場合があるため、余分に動画を長く・または短くする値。0.05が妥当。
