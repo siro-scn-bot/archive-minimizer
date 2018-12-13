@@ -29,7 +29,7 @@ def get_archive_chat2(youtube_url):
 
             for scrp in soup.find_all("script"):
                 if "window[\"ytInitialData\"]" in scrp.text:
-                    dict_str = scrp.text.split(" = ")[1]
+                    dict_str = scrp.text.split(" = ",1)[1]
 
             dict_str = dict_str.replace("false","False")
             dict_str = dict_str.replace("true","True")
